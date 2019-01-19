@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <integer-array name="default_colors">
+    <item>0xffF44336</item>
+    <item>0xffE91E63</item>
+    <item>0xff9C27B0</item>
+    <item>0xff673AB7</item>
+    <item>0xff3F51B5</item>
+    <item>0xff2196F3</item>
+    <item>0xff03A9F4</item>
+    <item>0xff00BCD4</item>
+    <item>0xff009688</item>
+    <item>0xff4CAF50</item>
+    <item>0xff8BC34A</item>
+    <item>0xffCDDC39</item>
+    <item>0xffFFEB3B</item>
+    <item>0xffFFC107</item>
+    <item>0xffFF9800</item>
+    <item>0xffFF5722</item>
+    <item>0xff795548</item>
+    <item>0xff9E9E9E</item>
+    <item>0xff607D8B</item>
+  </integer-array>
+
+  <array name="preloaded_fonts" translatable="false">
+    <item>@font/product_sans</item>
+  </array>
+
+  <string-array name="sort_by_fields">
+    <item>@string/notification_status</item>
+    <item>@string/notification_build_started_at</item>
+    <item>@string/notification_device</item>
+    <item>@string/notification_build_version</item>
+    <item>@string/notification_total_time_taken</item>
+    <item>@string/notification_stopped_at_step</item>
+  </string-array>
+</resources>

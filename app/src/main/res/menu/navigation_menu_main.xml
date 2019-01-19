@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group android:checkableBehavior="single">
+    <item
+      android:id="@+id/nav_notifications"
+      android:icon="@drawable/ic_format_list_bulleted_black"
+      android:title="@string/nav_item_notifications"/>
+    <item
+      android:id="@+id/nav_build_script_setup"
+      android:icon="@drawable/ic_build_black"
+      android:title="@string/nav_item_build_script_setup"/>
+    <item
+      android:id="@+id/nav_settings"
+      android:icon="@drawable/ic_settings_black"
+      android:title="@string/nav_item_settings"/>
+  </group>
+  <item
+    android:title="@string/nav_section_more">
+    <menu>
+      <group
+        android:checkableBehavior="single">
+        <item
+          android:id="@+id/nav_review_us"
+          android:icon="@drawable/ic_rate_review_black"
+          android:title="@string/nav_item_review"/>
+        <item
+          android:id="@+id/nav_other_apps"
+          android:icon="@drawable/ic_apps_black"
+          android:title="@string/nav_item_other_apps"/>
+        <item
+          android:id="@+id/nav_about"
+          android:icon="@drawable/ic_info_black"
+          android:title="@string/nav_item_about"/>
+      </group>
+    </menu>
+  </item>
+</menu>

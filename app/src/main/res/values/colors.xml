@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">#673AB7</color>
+  <color name="colorPrimaryDark">#512DA8</color>
+  <color name="colorAccent">#FF5722</color>
+
+  <!-- Material DEFAULT colors -->
+  <!--<color name="material_drawer_primary">?attr/colorPrimary</color>
+  <color name="material_drawer_primary_dark">?attr/colorPrimaryDark</color>
+  <color name="material_drawer_primary_light">?attr/colorPrimary</color>
+  <color name="material_drawer_accent">?attr/colorAccent</color>
+
+  &lt;!&ndash; OVERWRITE THESE COLORS FOR A LIGHT THEME &ndash;&gt;
+  &lt;!&ndash; MaterialDrawer DEFAULT colors &ndash;&gt;
+  <color name="material_drawer_background">?android:attr/colorBackground</color>
+  &lt;!&ndash; Material DEFAULT text / items colors &ndash;&gt;
+  <color name="material_drawer_primary_text">?android:attr/textColorPrimary</color>
+  <color name="material_drawer_primary_icon">?android:attr/textColorPrimary</color>
+  <color name="material_drawer_secondary_text">?android:attr/textColorSecondary</color>
+  <color name="material_drawer_hint_text">?android:attr/textColorSecondary</color>
+  <color name="material_drawer_divider">?android:attr/textColorSecondary</color>
+  &lt;!&ndash; Material DEFAULT drawer colors &ndash;&gt;
+  <color name="material_drawer_selected">?attr/colorPrimary</color>
+  <color name="material_drawer_selected_text">?android:attr/textColorPrimary</color>
+
+  &lt;!&ndash; OVERWRITE THESE COLORS FOR A DARK THEME &ndash;&gt;
+  &lt;!&ndash; MaterialDrawer DEFAULT DARK colors &ndash;&gt;
+  <color name="material_drawer_dark_background">?android:attr/colorBackground</color>
+  &lt;!&ndash; MaterialDrawer DEFAULT DARK text / items colors &ndash;&gt;
+  <color name="material_drawer_dark_primary_text">?android:attr/textColorPrimary</color>
+  <color name="material_drawer_dark_primary_icon">?android:attr/textColorPrimary</color>
+  <color name="material_drawer_dark_secondary_text">?android:attr/textColorSecondary</color>
+  <color name="material_drawer_dark_hint_text">?android:attr/textColorSecondary</color>
+  <color name="material_drawer_dark_divider">?android:attr/textColorSecondary</color>
+  &lt;!&ndash; MaterialDrawer DEFAULT DARK drawer colors &ndash;&gt;
+  <color name="material_drawer_dark_selected">?attr/colorPrimary</color>
+  <color name="material_drawer_dark_selected_text">?android:attr/textColorPrimary</color>-->
+</resources>

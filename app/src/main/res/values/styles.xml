@@ -1,0 +1,65 @@
+<resources>
+
+  <!-- Base application theme. -->
+  <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <!-- Customize your theme here. -->
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:fontFamily">@font/product_sans</item>
+  </style>
+
+  <style name="DetailStyle" parent="TextAppearance.AppCompat.Medium">
+    <item name="android:textColor">?android:attr/textColorPrimary</item>
+    <item name="android:drawableTint">?android:attr/textColorPrimary</item>
+    <item name="android:drawablePadding">8dp</item>
+    <item name="android:fontFamily">@font/product_sans</item>
+  </style>
+
+  <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
+
+  <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.MaterialComponents.Dark"/>
+
+  <style name="SplashTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@android:color/darker_gray</item>
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:fontFamily">@font/product_sans</item>
+  </style>
+
+  <style name="AppTheme.MaterialAboutActivity2" parent="Theme.AppCompat.NoActionBar">
+    <item name="colorPrimary">?attr/colorPrimary</item>
+    <item name="colorPrimaryDark">?attr/colorPrimaryDark</item>
+    <item name="colorAccent">?attr/colorAccent</item>
+    <item name="mal_toolbarTheme">@style/Theme.Mal.Toolbar.Dark</item>
+    <item name="mal_toolbarPopupTheme">@style/Theme.Mal.Toolbar.Dark</item>
+    <item name="mal_color_primary">?android:attr/textColorPrimary</item>
+    <item name="mal_color_secondary">?android:attr/textColorSecondary</item>
+    <item name="mal_card_background">?attr/cardBackgroundColor</item>
+    <item name="android:fontFamily">@font/product_sans</item>
+  </style>
+
+  <style name="AppTheme.MaterialAboutActivity" parent="Theme.Mal.Dark">
+    <item name="colorPrimary">?colorPrimary</item>
+    <item name="colorPrimaryDark">?colorPrimaryDark</item>
+    <item name="colorAccent">?colorAccent</item>
+    <item name="android:fontFamily">@font/product_sans</item>
+  </style>
+
+  <style name="MainTheme.Circled" parent="Theme.MaterialComponents.NoActionBar">
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="colorPrimary">@color/colorAccent</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+
+    <!-- MaterialDrawer specific values -->
+    <item name="material_drawer_background">?android:attr/colorBackground</item>
+    <item name="material_drawer_primary_text">?android:attr/textColorPrimary</item>
+    <item name="material_drawer_primary_icon">?android:attr/textColorPrimary</item>
+    <item name="material_drawer_secondary_text">?android:attr/textColorSecondary</item>
+    <!--<item name="material_drawer_hint_text">?android:attr/textColorHint</item>
+    <item name="material_drawer_divider">?android:attr/textColorHint</item>
+    <item name="material_drawer_selected_legacy">@color/material_drawer_selected</item> &lt;!&ndash; Defines the color if legacy style (Material 1, is
+    enabled) &ndash;&gt;-->
+    <item name="material_drawer_selected_text">?android:attr/textColorPrimaryInverse</item>
+  </style>
+</resources>

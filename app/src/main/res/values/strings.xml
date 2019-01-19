@@ -1,0 +1,90 @@
+<resources>
+  <string name="app_name">Build Notifier</string>
+  <string name="app_short_description">Get notified on build completion</string>
+  <string name="app_long_description">Detailed report of builds with logs, notifications on build completion, with minimal setup</string>
+
+  <!--Settings-->
+  <string name="key_dark_theme" translatable="false">dark_theme</string>
+  <string name="title_dark_theme">Dark Theme</string>
+  <string name="summary_dark_theme">Enable or disable dark theme</string>
+
+  <string name="key_primary_color" translatable="false">primary_color</string>
+  <string name="title_primary_color">Primary Color</string>
+  <string name="summary_primary_color">Choose a primary color</string>
+
+  <string name="key_accent_color" translatable="false">accent_color</string>
+  <string name="title_accent_color">Accent Color</string>
+  <string name="summary_accent_color">Choose an accent color</string>
+
+  <string name="category_title_theme">Theme</string>
+  <string name="category_title_other">Other</string>
+
+  <string name="key_fcm_token" translatable="false">fcm_token</string>
+  <string name="title_fcm_token">Device Token</string>
+  <string name="summary_fcm_token">View/Copy your Device\'s FCM Token</string>
+
+  <string name="title_quick_start" translatable="false">Quick Start Tutorial</string>
+  <string name="key_quick_start">quick_start</string>
+
+  <!-- Intro Screens -->
+  <string name="intro_screen_1_title">Welcome</string>
+  <string name="intro_screen_1_description">Tired of continuously checking SSH for the status of your AOSP Builds?\nWith this app, you will be directly
+    notified when/if your build succeeds/fails\n\nFollow this quick start guide to begin</string>
+
+  <string name="intro_screen_2_title">Build Script Setup</string>
+  <string name="intro_screen_2_description">Follow the instructions given here to setup the build script: https://github.com/shripal17/BuildNotifier</string>
+
+  <string name="intro_screen_3_title">Relax!</string>
+  <string name="intro_screen_3_description">Once you\'ve completed the build script setup, sit back and relax\n\nPro Tip: You can view the
+    build logs (if enabled in build script) upon clicking on the notification item</string>
+
+  <!--Navigation Drawer Items-->
+  <string name="nav_item_notifications">Notifications</string>
+  <string name="nav_item_build_script_setup">Build Script Setup</string>
+  <string name="nav_item_settings">Settings</string>
+  <string name="nav_section_more">More</string>
+  <string name="nav_item_other_apps">Other Apps</string>
+  <string name="nav_item_review">Review us on Play Store</string>
+  <string name="about_app">About %s</string>
+  <string name="nav_item_about">About</string>
+
+  <string name="navigation_drawer_open">Open Drawer</string>
+  <string name="navigation_drawer_close">Close Drawer</string>
+  <string name="main_title_notifications">Notifications</string>
+  <string name="build_successful">Build Successful</string>
+  <string name="build_failed">Build Failed</string>
+  <string name="notification_text">Device: %s
+    Step: %s
+    Total Time: %s</string>
+  <string name="title_logs">Logs</string>
+  <string name="line_copied">Line %d copied to clipboard</string>
+  <string name="failed_to_load_log">Failed to load log file</string>
+  <string name="title_settings">Settings</string>
+  <string name="about_version">Version</string>
+  <string name="about_open_source">We\'re open source!</string>
+  <string name="about_changelog">Changelog</string>
+  <string name="about_changelog_close">Close</string>
+  <string name="about_open_source_licenses">Open Source Licenses</string>
+  <string name="about_people">People</string>
+  <string name="settings_device_token">Device Token</string>
+  <string name="settings_device_token_copied">Device Token copied to clipboard</string>
+  <string name="settings_device_token_text">%s\n\nPaste this token at the top of your build.sh file after "DEVICE_TOKEN="</string>
+  <string name="notification_action_view_logs">View Logs</string>
+  <string name="logs_save">Save</string>
+  <string name="no_notifications_yet">Bro do you even develop?</string>
+  <string name="notification_status">Status</string>
+  <string name="notification_build_started_at">Build Started At</string>
+  <string name="notification_device">Device</string>
+  <string name="notification_stopped_at_step">Stopped at Step</string>
+  <string name="notification_build_version">Build Version</string>
+  <string name="notification_total_time_taken">Total Time Taken</string>
+  <string name="main_sort">Sort</string>
+  <string name="main_search">Search</string>
+  <string name="main_sort_by">Sort by</string>
+  <string name="main_sort_reversed">Reversed</string>
+  <string name="deleted_notification">Deleted Notification for %s</string>
+  <string name="key_support_us">support_us</string>
+  <string name="title_support_us">Support Us</string>
+  <string name="summary_support_us">By watching a non-quittable ad</string>
+  <string name="loading_ad">Loading Ad...</string>
+</resources>

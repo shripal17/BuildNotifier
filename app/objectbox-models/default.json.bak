@@ -1,0 +1,54 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:7833679437448483136",
+      "lastPropertyId": "7:7426759674011147925",
+      "name": "BuildNotification",
+      "properties": [
+        {
+          "id": "1:976072601120301287",
+          "name": "id"
+        },
+        {
+          "id": "2:239411881729310226",
+          "name": "status"
+        },
+        {
+          "id": "3:974127010651317349",
+          "name": "time"
+        },
+        {
+          "id": "4:8555069459876835487",
+          "name": "logFile"
+        },
+        {
+          "id": "5:5770923876898243833",
+          "name": "currentStep"
+        },
+        {
+          "id": "6:7558122383109725012",
+          "name": "device"
+        },
+        {
+          "id": "7:7426759674011147925",
+          "name": "androidVersion"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:7833679437448483136",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

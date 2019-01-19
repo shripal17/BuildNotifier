@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto">
+
+  <PreferenceCategory
+    android:title="@string/category_title_theme">
+
+    <ColorPickerPreference
+      android:defaultValue="@color/colorPrimary"
+      android:key="@string/key_primary_color"
+      android:summary="@string/summary_primary_color"
+      android:title="@string/title_primary_color"
+      app:pref_colors="@array/default_colors"
+      app:pref_currentColor="@color/colorPrimary"
+      app:pref_size="small"/>
+
+    <ColorPickerPreference
+      android:defaultValue="@color/colorAccent"
+      android:key="@string/key_accent_color"
+      android:summary="@string/summary_accent_color"
+      android:title="@string/title_accent_color"
+      app:pref_colors="@array/default_colors"
+      app:pref_currentColor="@color/colorAccent"
+      app:pref_size="small"/>
+
+    <SwitchPreference
+      android:defaultValue="true"
+      android:key="@string/key_dark_theme"
+      android:summary="@string/summary_dark_theme"
+      android:title="@string/title_dark_theme"/>
+  </PreferenceCategory>
+
+  <PreferenceCategory
+    android:title="@string/category_title_other">
+    <Preference
+      android:key="@string/key_fcm_token"
+      android:summary="@string/summary_fcm_token"
+      android:title="@string/title_fcm_token"/>
+
+    <Preference
+      android:key="@string/key_quick_start"
+      android:title="@string/title_quick_start"/>
+
+    <Preference
+      android:key="@string/key_support_us"
+      android:title="@string/title_support_us"
+      android:summary="@string/summary_support_us"/>
+  </PreferenceCategory>
+</PreferenceScreen>

@@ -5,17 +5,18 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.webkit.WebView
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.TooltipCompat
 import androidx.core.widget.NestedScrollView
 import br.tiagohm.codeview.CodeView
 import br.tiagohm.codeview.Language
 import br.tiagohm.codeview.Theme
-import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.StringRequestListener
 import com.codertainment.buildnotifier.KEY_BUILD_NOTIFICATION
 import com.codertainment.buildnotifier.R
 import com.codertainment.buildnotifier.model.BuildNotification
@@ -53,6 +54,7 @@ class LogsActivity : CAppCompatActivity() {
   private val step by bindView<TextView>(R.id.notification_step)
   private val buildVersion by bindView<TextView>(R.id.notification_build_version)
   private val timeTaken by bindView<TextView>(R.id.notification_time_taken)
+  private lateinit var search: SearchView
 
   private val df = SimpleDateFormat("HH:mm\ndd/MM/yyyy")
 
@@ -158,60 +160,66 @@ class LogsActivity : CAppCompatActivity() {
         language = Language.ACCESS_LOG
         apply()
       }
-    }.addOnFailureListener{
+    }.addOnFailureListener {
       it.printStackTrace()
       showErrorToast(it.localizedMessage)
       logs_progress.visibility = View.GONE
     }
-    /*AndroidNetworking.get(notif!!.logFile)
-      .build()
-      .getAsString(object : StringRequestListener {
-        override fun onResponse(response: String?) {
-          if (response != null) {
-            logs_code_view.apply {
-              setOnHighlightListener(object : CodeView.OnHighlightListener {
-                override fun onStartCodeHighlight() {
+  }
 
-                }
+  override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    menuInflater.inflate(R.menu.menu_logs, menu)
+    search = menu!!.findItem(R.id.action_search).actionView as SearchView
+    search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+      override fun onQueryTextSubmit(p0: String?): Boolean {
+        logs_code_view.findAll(p0)
+        logs_code_view.toggleSearch(true)
+        logs_code_view.findNext(true)
+        return true
+      }
 
-                override fun onLanguageDetected(p0: Language?, p1: Int) {
+      override fun onQueryTextChange(p0: String?): Boolean {
+        return false
+      }
+    })
+    search.setOnCloseListener {
+      logs_code_view.toggleSearch(false)
+      true
+    }
+    return true
+  }
 
-                }
-
-                override fun onFontSizeChanged(p0: Int) {
-
-                }
-
-                override fun onLineClicked(p0: Int, p1: String?) {
-                  clipboardManager.primaryClip = ClipData.newPlainText("Build Logs", p1)
-                  showInfoToast(String.format(getString(R.string.line_copied), p0))
-                }
-
-                override fun onFinishCodeHighlight() {
-                  runOnUiThread {
-                    logs_progress.visibility = View.GONE
-                    logs_code_view.visibility = View.VISIBLE
-                  }
-                }
-              })
-              code = response
-              isShowLineNumber = true
-              isWrapLine = false
-              isZoomEnabled = true
-              theme = if (Colorful().getDarkTheme()) Theme.ATOM_ONE_DARK else Theme.ATOM_ONE_LIGHT
-              startLineNumber = 1
-              language = Language.AUTO
-              apply()
-            }
-          }
+  private fun WebView.toggleSearch(enable: Boolean) {
+    try {
+      for (m in WebView::class.java.declaredMethods) {
+        if (m.name == "setFindIsUp") {
+          m.isAccessible = true
+          m.invoke(this, enable)
+          break
         }
+      }
+    } catch (e: Exception) {
+      e.printStackTrace()
+    }
+  }
 
-        override fun onError(anError: ANError?) {
-          anError?.printStackTrace()
-          showErrorToast(getString(R.string.failed_to_load_log))
-          logs_progress.visibility = View.GONE
-        }
-      })*/
+  override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    if (item?.itemId == R.id.action_next) {
+      if (search.isIconified) {
+        logs_code_view.scrollTo(0, logs_code_view.contentHeight)
+      } else {
+        logs_code_view.findNext(true)
+      }
+      return true
+    } else if (item?.itemId == R.id.action_previous) {
+      if (search.isIconified) {
+        logs_code_view.scrollTo(0, 0)
+      } else {
+        logs_code_view.findNext(false)
+      }
+      return true
+    }
+    return false
   }
 
   override fun onSupportNavigateUp(): Boolean {

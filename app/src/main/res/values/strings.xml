@@ -87,4 +87,8 @@
   <string name="title_support_us">Support Us</string>
   <string name="summary_support_us">By watching a non-quittable ad</string>
   <string name="loading_ad">Loading Ad...</string>
+  <string name="next">Next</string>
+  <string name="previous">Previous</string>
+  <string name="failed_to_load_ad">Failed to oad ad, please try again with an active internet connection</string>
+  <string name="thanks">Thank you for supporting us! ❤</string>
 </resources>

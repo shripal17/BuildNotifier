@@ -6,12 +6,12 @@
   android:id="@+id/main_drawer_layout"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  android:fitsSystemWindows="true">
+  android:fitsSystemWindows="true"
+  tools:context=".activity.MainActivity">
   <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:id="@+id/main_root"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activity.MainActivity">
+    android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
       android:layout_width="match_parent"

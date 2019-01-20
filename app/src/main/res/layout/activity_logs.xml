@@ -28,10 +28,10 @@
         layout="@layout/notification"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="84dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="?attr/actionBarSize"
         android:fitsSystemWindows="true"
         app:layout_collapseMode="parallax"/>
 
@@ -51,6 +51,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
+    android:scrollbarSize="8dp"
+    android:scrollbarThumbVertical="?attr/colorAccent"
+    android:scrollbars="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:layout_constraintTop_toTopOf="parent">
     <androidx.constraintlayout.widget.ConstraintLayout

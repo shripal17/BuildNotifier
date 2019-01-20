@@ -10,6 +10,7 @@ import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.SearchView
 import androidx.browser.customtabs.CustomTabsIntent
@@ -24,6 +25,7 @@ import com.codertainment.buildnotifier.*
 import com.codertainment.buildnotifier.adapter.NotificationAdapter
 import com.codertainment.buildnotifier.helper.RevealCircleAnimatorHelper
 import com.codertainment.buildnotifier.helper.SimpleItemTouchHelperCallback
+import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
@@ -78,6 +80,14 @@ class MainActivity : CAppCompatActivity(), NavigationView.OnNavigationItemSelect
     refresh()
 
     main_adView.loadAd(AdRequest.Builder().addTestDevice("3A3EAD8011A8331155F75F36592A8315").build())
+    main_adView.adListener = object : AdListener() {
+      override fun onAdLoaded() {
+        super.onAdLoaded()
+        val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+        lp.setMargins(0, 0, 0, main_adView.height)
+        main_recycler.layoutParams = lp
+      }
+    }
   }
 
   override fun onResume() {

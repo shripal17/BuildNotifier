@@ -13,9 +13,13 @@ import com.codertainment.buildnotifier.KEY_FCM_TOKEN
 import com.codertainment.buildnotifier.R
 import com.codertainment.buildnotifier.activity.MainIntroActivity
 import com.codertainment.buildnotifier.getPrefs
+import com.droidman.ktoasty.showErrorToast
 import com.droidman.ktoasty.showInfoToast
+import com.droidman.ktoasty.showSuccessToast
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.reward.RewardItem
+import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import com.mcxiaoke.koi.ext.find
 import com.mcxiaoke.koi.ext.finish
 import com.mcxiaoke.koi.log.logd
@@ -145,8 +149,38 @@ class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChan
       requireContext().showInfoToast(getString(R.string.loading_ad))
       MobileAds.getRewardedVideoAdInstance(this@SettingsFragment.requireActivity()).apply {
         loadAd(BuildConfig.ADMOB_REWARDED_AD_UNIT_ID, AdRequest.Builder().addTestDevice("3A3EAD8011A8331155F75F36592A8315").build())
-        if (isLoaded) {
-          show()
+        rewardedVideoAdListener = object : RewardedVideoAdListener {
+          override fun onRewardedVideoAdClosed() {
+
+          }
+
+          override fun onRewardedVideoAdLeftApplication() {
+
+          }
+
+          override fun onRewardedVideoAdLoaded() {
+            this@apply.show()
+          }
+
+          override fun onRewardedVideoAdOpened() {
+
+          }
+
+          override fun onRewardedVideoCompleted() {
+
+          }
+
+          override fun onRewarded(p0: RewardItem?) {
+            requireContext().showSuccessToast(getString(R.string.thanks))
+          }
+
+          override fun onRewardedVideoStarted() {
+
+          }
+
+          override fun onRewardedVideoAdFailedToLoad(p0: Int) {
+            requireContext().showErrorToast(getString(R.string.failed_to_load_ad))
+          }
         }
       }
       true

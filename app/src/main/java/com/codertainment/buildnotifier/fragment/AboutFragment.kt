@@ -53,7 +53,7 @@ class AboutFragment : MaterialAboutFragment() {
       }.build()
     )
 
-    val markdownTheme = if (Colorful().getDarkTheme()) "file:///android_asset/dark.css" else "file:///android_asset/light.css"
+    val markdownTheme = if (Colorful().getDarkTheme()) "file:///android_asset/markdown/dark.css" else "file:///android_asset/markdown/light.css"
     val changelog = MaterialAboutActionItem.Builder().apply {
       icon(getIcon(GoogleMaterial.Icon.gmd_history))
       text(getString(R.string.about_changelog))

@@ -26,6 +26,7 @@ Follow steps mentioned in the [Server Repo](https://github.com/shripal17/BuildNo
 - Tells you the percentage (if available) at which the build stopped 
 - Build Logs are Formatted for better readability (keywords like note, error, warning are highlighted)
 - View, Sort, Search and Delete Notifications 
+- Custom Notification Tone for Success/Failure Notifications
 - Smooth and crisp animations in the app
 - Dynamic theming
 - User can select his/her favorite colors as Primary/Accent Colors throughout the app
@@ -49,9 +50,23 @@ ext {
 ### Build
 Building the app is regular procedure for Android Studio
 
+## TODO
+- [ ] Integration with Jenkins
+- [ ] Triggering/Controlling Builds from the app
+- [ ] Broadcasting to multiple devices based on topics
+
+## Credits
+- AOSP (Ofcourse)
+- Google
+- Firebase
+- AndroidX
+- ObjectBox
+- JetBrains for Kotlin, Anko and IntelliJ IDEA!
+- And the huge Android App Devs community for their awesome, easy-to-use libraries!
+
 ## License 
 ```
-Copyright 2019 Shripal Jain
+   Copyright 2019 Shripal Jain
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

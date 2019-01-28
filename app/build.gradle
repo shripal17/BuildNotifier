@@ -51,6 +51,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation project(':codeview')
     implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation 'com.google.firebase:firebase-storage:16.0.5'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
@@ -63,10 +64,10 @@ dependencies {
     implementation 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
     implementation 'com.github.garretyoder:Colorful:2.3.4'
-    implementation 'com.github.tiagohm:CodeView:0.4.0'
     implementation 'com.github.shubhamvashisht:KToasty:1.0'
     implementation 'com.takisoft.preferencex:preferencex-colorpicker:1.0.0'
     implementation 'com.takisoft.preferencex:preferencex:1.0.0'
+    implementation 'com.takisoft.preferencex:preferencex-ringtone:1.0.0'
     implementation 'com.github.daniel-stoneuk:material-about-library:2.4.2'
     implementation "com.mikepenz:aboutlibraries:6.1.1"
     implementation 'androidx.multidex:multidex:2.0.1'
@@ -75,9 +76,11 @@ dependencies {
     implementation "com.mikepenz:iconics-core:3.1.0@aar"
     implementation 'com.mikepenz:google-material-typeface:3.0.1.3.original@aar'
     implementation 'com.mikepenz:material-design-iconic-typeface:2.2.0.5@aar'
+    implementation 'com.mikepenz:community-material-typeface:2.7.94.1@aar'
     implementation 'us.feras.mdv:markdownview:1.1.0'
     implementation 'com.github.aniketbhoite:MutativeFab:1.0.8'
     implementation 'com.afollestad.material-dialogs:core:2.0.0-rc7'
+    implementation 'com.github.florent37:runtime-permission-kotlin:1.1.0'
 }
 
 androidExtensions {

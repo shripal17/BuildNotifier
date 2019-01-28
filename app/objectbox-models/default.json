@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:7833679437448483136",
-      "lastPropertyId": "9:2977692337836276126",
+      "lastPropertyId": "11:2024594924822413428",
       "name": "BuildNotification",
       "properties": [
         {
@@ -25,10 +25,6 @@
           "name": "logFile"
         },
         {
-          "id": "5:5770923876898243833",
-          "name": "currentStep"
-        },
-        {
           "id": "6:7558122383109725012",
           "name": "device"
         },
@@ -39,6 +35,14 @@
         {
           "id": "9:2977692337836276126",
           "name": "timeTaken"
+        },
+        {
+          "id": "10:104054292170490505",
+          "name": "errorLogFile"
+        },
+        {
+          "id": "11:2024594924822413428",
+          "name": "progress"
         }
       ],
       "relations": []
@@ -53,7 +57,8 @@
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
-    7426759674011147925
+    7426759674011147925,
+    5770923876898243833
   ],
   "retiredRelationUids": [],
   "version": 1

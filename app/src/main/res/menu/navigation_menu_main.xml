@@ -10,6 +10,14 @@
       android:icon="@drawable/ic_build_black"
       android:title="@string/nav_item_build_script_setup"/>
     <item
+      android:id="@+id/nav_device_token"
+      android:icon="@drawable/ic_android_black"
+      android:title="@string/nav_item_view_device_token"/>
+    <item
+      android:id="@+id/nav_support_us"
+      android:icon="@drawable/ic_heart_black"
+      android:title="@string/title_support_us"/>
+    <item
       android:id="@+id/nav_settings"
       android:icon="@drawable/ic_settings_black"
       android:title="@string/nav_item_settings"/>

@@ -4,7 +4,10 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AlertDialog
+import com.codertainment.buildnotifier.APP_GITHUB_LINK
+import com.codertainment.buildnotifier.APP_REPO_NAME
 import com.codertainment.buildnotifier.R
+import com.codertainment.buildnotifier.REPO_OWNER
 import com.danielstone.materialaboutlibrary.ConvenienceBuilder
 import com.danielstone.materialaboutlibrary.MaterialAboutFragment
 import com.danielstone.materialaboutlibrary.items.MaterialAboutActionItem
@@ -13,6 +16,7 @@ import com.danielstone.materialaboutlibrary.model.MaterialAboutCard
 import com.danielstone.materialaboutlibrary.model.MaterialAboutList
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.LibsBuilder
+import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.mikepenz.google_material_typeface_library.GoogleMaterial
 import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.typeface.IIcon
@@ -48,7 +52,7 @@ class AboutFragment : MaterialAboutFragment() {
         text(getString(R.string.about_open_source))
         icon(getIcon(MaterialDesignIconic.Icon.gmi_github))
         setOnClickAction {
-          openGithub("https://github.com/shripal17/BuildNotifer")
+          openLink(APP_GITHUB_LINK)
         }
       }.build()
     )
@@ -64,7 +68,7 @@ class AboutFragment : MaterialAboutFragment() {
               d.dismiss()
             }
             .setView(MarkdownView(this@AboutFragment.requireContext()).apply {
-              loadMarkdownFile("https://raw.githubusercontent.com/shripal17/BuildNotifier/master/CHANGELOG.md", markdownTheme)
+              loadMarkdownFile("https://raw.githubusercontent.com/$REPO_OWNER/$APP_REPO_NAME/master/CHANGELOG.md", markdownTheme)
               padding = 16
             })
             .create()
@@ -94,11 +98,35 @@ class AboutFragment : MaterialAboutFragment() {
 
     val people = MaterialAboutCard.Builder().apply {
       title(getString(R.string.about_people))
-      addItem(getPerson("Shripal Jain", "Lead Developer", "shripal17"))
-      addItem(getPerson("Savio Perera", "UI/UX Expert", "Wizper99"))
+      addItem(getPerson("Shripal Jain", getString(R.string.lead_developer), REPO_OWNER))
+      addItem(getPerson("Pranay Narang", getString(R.string.translations_manager), "TheDarkBeast"))
+      addItem(getPerson("Savio Perera", getString(R.string.ui_ux_expert), "Wizper99"))
     }
 
     mal.addCard(people.build())
+
+    val social = MaterialAboutCard.Builder().title(R.string.contact)
+
+    val telegram = MaterialAboutActionItem.Builder().apply {
+      text(R.string.telegram)
+      icon(getIcon(CommunityMaterial.Icon2.cmd_telegram))
+      setOnClickAction {
+        openLink("https://t.me/BuildNotifier")
+      }
+    }
+    social.addItem(telegram.build())
+
+    val xda = MaterialAboutActionItem.Builder().apply {
+      text(R.string.xda_thread)
+      icon(getIcon(CommunityMaterial.Icon2.cmd_xda))
+      setOnClickAction {
+        // TODO Replace with actual XDA Thread Link
+        openLink("https://xda-developers.com")
+      }
+    }
+    social.addItem(xda.build())
+
+    mal.addCard(social.build())
 
     return mal.build()
   }
@@ -109,12 +137,12 @@ class AboutFragment : MaterialAboutFragment() {
     icon(getIcon(GoogleMaterial.Icon.gmd_person))
     if (githubUsername != null && githubUsername.isNotEmpty()) {
       setOnClickAction {
-        openGithub("https://github.com/$githubUsername")
+        openLink("https://github.com/$githubUsername")
       }
     }
   }.build()
 
-  private fun openGithub(link: String) = startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link)))
+  private fun openLink(link: String) = startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(link)))
 
   private fun getIcon(iicon: IIcon) = IconicsDrawable(requireContext()).icon(iicon).color(getIconColor())
 

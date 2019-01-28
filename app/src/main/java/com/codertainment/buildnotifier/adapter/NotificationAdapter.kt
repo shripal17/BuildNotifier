@@ -17,6 +17,7 @@ import com.codertainment.buildnotifier.KEY_BUILD_NOTIFICATION
 import com.codertainment.buildnotifier.R
 import com.codertainment.buildnotifier.activity.LogsActivity
 import com.codertainment.buildnotifier.activity.MainActivity
+import com.codertainment.buildnotifier.getThemeColor
 import com.codertainment.buildnotifier.helper.ItemTouchHelperAdapter
 import com.codertainment.buildnotifier.model.BuildNotification
 import com.codertainment.buildnotifier.notifBox
@@ -46,6 +47,7 @@ class NotificationAdapter(val ctx: Activity, private val allData: List<BuildNoti
     }
 
     Snackbar.make((ctx as MainActivity).main_root, ctx.getString(R.string.deleted_notification, item.device), Snackbar.LENGTH_LONG)
+      .setActionTextColor(ctx.getThemeColor(R.attr.colorAccent))
       .setAction("UNDO") {
         remove = false
         data.add(position, item)
@@ -74,7 +76,7 @@ class NotificationAdapter(val ctx: Activity, private val allData: List<BuildNoti
           ArrayList(
             allData.filter {
               val device = if (it.device != null) it.device!!.toLowerCase() else ""
-              val currentStep = if (it.currentStep != null) it.currentStep!!.toLowerCase() else ""
+              val currentStep = if (it.progress != null) it.progress!!.toLowerCase() else ""
               val buildVersion = if (it.buildVersion != null) it.buildVersion!!.toLowerCase() else ""
               device.contains(toFilter) || currentStep.contains(toFilter) || buildVersion.contains(toFilter)
             }
@@ -109,7 +111,7 @@ class NotificationAdapter(val ctx: Activity, private val allData: List<BuildNoti
     val text by bindView<TextView>(R.id.notification_text)
     val time by bindView<TextView>(R.id.notification_time)
     val device by bindView<TextView>(R.id.notification_device)
-    private val step by bindView<TextView>(R.id.notification_step)
+    private val progress by bindView<TextView>(R.id.notification_progress)
     private val buildVersion by bindView<TextView>(R.id.notification_build_version)
     private val timeTaken by bindView<TextView>(R.id.notification_time_taken)
 
@@ -134,7 +136,7 @@ class NotificationAdapter(val ctx: Activity, private val allData: List<BuildNoti
 
       device.text = item.device
 
-      step.text = item.currentStep
+      progress.text = item.progress + "%"
 
       buildVersion.text = item.buildVersion
 

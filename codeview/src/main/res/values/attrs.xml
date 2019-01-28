@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <declare-styleable name="CodeView">
+    <attr format="boolean" name="cv_wrap_line"/>
+    <attr format="integer" name="cv_font_size"/>
+    <attr format="boolean" name="cv_zoom_enable"/>
+    <attr format="boolean" name="cv_show_line_number"/>
+    <attr format="integer" name="cv_start_line_number"/>
+    <attr format="integer" name="cv_highlight_line_number"/>
+  </declare-styleable>
+</resources>

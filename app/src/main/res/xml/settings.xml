@@ -32,6 +32,23 @@
   </PreferenceCategory>
 
   <PreferenceCategory
+    android:title="@string/category_title_notifications">
+    <RingtonePreference
+      android:defaultValue="content://settings/system/notification_sound"
+      android:key="@string/key_success_tone"
+      android:ringtoneType="notification"
+      android:summary="@string/summary_success_tone"
+      android:title="@string/title_success_tone"/>
+
+    <RingtonePreference
+      android:defaultValue="content://settings/system/notification_sound"
+      android:key="@string/key_failure_tone"
+      android:ringtoneType="notification"
+      android:summary="@string/summary_failure_tone"
+      android:title="@string/title_failure_tone"/>
+  </PreferenceCategory>
+
+  <PreferenceCategory
     android:title="@string/category_title_other">
     <Preference
       android:key="@string/key_fcm_token"

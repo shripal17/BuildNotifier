@@ -33,6 +33,6 @@
     <item>@string/notification_device</item>
     <item>@string/notification_build_version</item>
     <item>@string/notification_total_time_taken</item>
-    <item>@string/notification_stopped_at_step</item>
+    <item>@string/notification_progress</item>
   </string-array>
 </resources>

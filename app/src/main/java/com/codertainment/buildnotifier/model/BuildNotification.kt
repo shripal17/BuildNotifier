@@ -13,7 +13,8 @@ data class BuildNotification(
   var status: Boolean = false,
   var time: Long = System.currentTimeMillis(),
   var logFile: String? = "",
-  var currentStep: String? = "",
+  var errorLogFile: String? = "",
+  var progress: String? = "",
   var buildVersion: String? = "",
   var device: String? = "",
   var timeTaken: Long = 0L

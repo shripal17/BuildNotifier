@@ -2,7 +2,10 @@ package com.codertainment.buildnotifier.receiver
 
 import android.app.PendingIntent
 import android.content.Intent
+import android.media.AudioManager
+import android.net.Uri
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.codertainment.buildnotifier.*
 import com.codertainment.buildnotifier.activity.LogsActivity
@@ -33,7 +36,8 @@ class NotificationReceiver : FirebaseMessagingService() {
       status = data["status"]!!.toBoolean(),
       time = data["time"]!!.toLong(),
       logFile = data["logFile"],
-      currentStep = data["currentStep"],
+      errorLogFile = data["errorLogFile"],
+      progress = data["progress"],
       buildVersion = data["buildVersion"],
       device = data["device"],
       timeTaken = data["timeTaken"]!!.toLong()
@@ -56,17 +60,23 @@ class NotificationReceiver : FirebaseMessagingService() {
       R.drawable.ic_clear_white
     }
 
-    logd("notifParams", notif.device + notif.currentStep + notif.formattedTimeTaken)
+    logd("notifParams", notif.device + notif.progress + notif.formattedTimeTaken)
 
-    val notifBuilder = NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID)
+    val notifChannelId = if (notif.status) {
+      BUILD_SUCCESS_NOTIFICATION_CHANNEL_ID
+    } else {
+      BUILD_FAILURE_NOTIFICATION_CHANNEL_ID
+    }
+
+    val notifBuilder = NotificationCompat.Builder(this, notifChannelId)
       .setContentTitle(title)
-      .setWhen(notif.time)
+      .setWhen(notif.time + notif.timeTaken)
       .setStyle(
         NotificationCompat.BigTextStyle()
           .bigText(
             String.format(
               getString(R.string.notification_text),
-              notif.device, notif.currentStep, notif.formattedTimeTaken
+              notif.device, notif.progress, notif.formattedTimeTaken
             )
           )
       )
@@ -74,6 +84,26 @@ class NotificationReceiver : FirebaseMessagingService() {
       .setAutoCancel(true)
       .setSmallIcon(icon)
 
+
+    val notifColor = if (notif.status) {
+      ContextCompat.getColor(this, R.color.md_green_700)
+    } else {
+      ContextCompat.getColor(this, R.color.md_red_700)
+    }
+    notifBuilder.color = notifColor
+    notifBuilder.setColorized(true)
+
+    val notifUri = if (notif.status) {
+      getPrefs().getString(getString(R.string.key_success_tone))
+    } else {
+      getPrefs().getString(getString(R.string.key_failure_tone))
+    }
+
+    logd("notifUri: $notifUri")
+
+    notifBuilder.setSound(Uri.parse(notifUri), AudioManager.STREAM_NOTIFICATION)
+
+    createNotifChannel(notifChannelId, title, soundUri = Uri.parse(notifUri))
 
     if (notif.logFile != null && notif.logFile != "") {
       val viewLogsIntent = LogsActivity.getIntent(this, notif)

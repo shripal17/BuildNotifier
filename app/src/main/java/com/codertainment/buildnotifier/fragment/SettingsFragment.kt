@@ -1,18 +1,12 @@
 package com.codertainment.buildnotifier.fragment
 
-import android.content.ClipData
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.widget.ImageButton
-import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.preference.Preference
 import androidx.preference.SwitchPreference
-import com.codertainment.buildnotifier.BuildConfig
-import com.codertainment.buildnotifier.KEY_FCM_TOKEN
-import com.codertainment.buildnotifier.R
+import com.codertainment.buildnotifier.*
 import com.codertainment.buildnotifier.activity.MainIntroActivity
-import com.codertainment.buildnotifier.getPrefs
 import com.droidman.ktoasty.showErrorToast
 import com.droidman.ktoasty.showInfoToast
 import com.droidman.ktoasty.showSuccessToast
@@ -20,14 +14,12 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.ads.reward.RewardItem
 import com.google.android.gms.ads.reward.RewardedVideoAdListener
-import com.mcxiaoke.koi.ext.find
 import com.mcxiaoke.koi.ext.finish
-import com.mcxiaoke.koi.log.logd
 import com.takisoft.preferencex.ColorPickerPreference
 import com.takisoft.preferencex.PreferenceFragmentCompat
+import com.takisoft.preferencex.RingtonePreference
 import io.multimoon.colorful.Colorful
 import io.multimoon.colorful.ThemeColor
-import org.jetbrains.anko.clipboardManager
 import org.jetbrains.anko.support.v4.startActivity
 
 class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChangeListener {
@@ -35,6 +27,8 @@ class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChan
   private lateinit var primaryColor: ColorPickerPreference
   private lateinit var accentColor: ColorPickerPreference
   private lateinit var darkTheme: SwitchPreference
+  private lateinit var successTone: RingtonePreference
+  private lateinit var failureTone: RingtonePreference
   private lateinit var fcmToken: Preference
   private lateinit var quickStart: Preference
   private lateinit var supportUs: Preference
@@ -109,30 +103,7 @@ class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChan
 
     fcmToken = findPreference(getString(R.string.key_fcm_token)).apply {
       setOnPreferenceClickListener {
-        val v = layoutInflater.inflate(R.layout.dialog_fcm_token, null, false)
-        val fcmText = v.find<TextView>(R.id.fcm_token)
-        val fcmTextCopy = v.find<ImageButton>(R.id.fcm_token_copy)
-
-        val fcmToken = this@SettingsFragment.requireContext().getPrefs().getString(KEY_FCM_TOKEN)
-        fcmToken?.let {
-          logd("fcmToken", it.length.toString())
-        }
-
-        fcmTextCopy.setOnClickListener {
-          this@SettingsFragment.requireContext().clipboardManager.primaryClip = ClipData.newPlainText(getString(R.string.settings_device_token), fcmToken)
-          this@SettingsFragment.requireContext().showInfoToast(getString(R.string.settings_device_token_copied))
-        }
-
-        fcmText.text = getString(R.string.settings_device_token_text, fcmToken)
-
-        AlertDialog.Builder(this@SettingsFragment.requireContext())
-          .setTitle(R.string.title_fcm_token)
-          .setView(v)
-          .setPositiveButton(android.R.string.ok) { d, _ ->
-            d.dismiss()
-          }
-          .create()
-          .show()
+        this@SettingsFragment.requireContext().showDeviceTokenDialog()
         true
       }
     }
@@ -148,7 +119,7 @@ class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChan
     supportUs.setOnPreferenceClickListener {
       requireContext().showInfoToast(getString(R.string.loading_ad))
       MobileAds.getRewardedVideoAdInstance(this@SettingsFragment.requireActivity()).apply {
-        loadAd(BuildConfig.ADMOB_REWARDED_AD_UNIT_ID, AdRequest.Builder().addTestDevice("3A3EAD8011A8331155F75F36592A8315").build())
+        loadAd(BuildConfig.ADMOB_REWARDED_AD_UNIT_ID, AdRequest.Builder().addTestDevice("6E5C1B71A72DFF0228687A2FBBD676E3").build())
         rewardedVideoAdListener = object : RewardedVideoAdListener {
           override fun onRewardedVideoAdClosed() {
 
@@ -184,7 +155,18 @@ class SettingsFragment : PreferenceFragmentCompat(), Preference.OnPreferenceChan
         }
       }
       true
+    }
 
+    successTone = findPreference(getString(R.string.key_success_tone)) as RingtonePreference
+    successTone.setOnPreferenceChangeListener { _, newValue ->
+      requireContext().createNotifChannel(BUILD_SUCCESS_NOTIFICATION_CHANNEL_ID, "Build Success", soundUri = newValue as Uri)
+      true
+    }
+
+    failureTone = findPreference(getString(R.string.key_failure_tone)) as RingtonePreference
+    failureTone.setOnPreferenceChangeListener { _, newValue ->
+      requireContext().createNotifChannel(BUILD_FAILURE_NOTIFICATION_CHANNEL_ID, "Build Failure", soundUri = newValue as Uri)
+      true
     }
   }
 

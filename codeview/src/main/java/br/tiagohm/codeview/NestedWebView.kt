@@ -1,4 +1,4 @@
-package com.codertainment.buildnotifier.view
+package br.tiagohm.codeview
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -10,8 +10,8 @@ import androidx.core.view.NestedScrollingChild
 import androidx.core.view.NestedScrollingChildHelper
 import androidx.core.view.ViewCompat
 
-class NestedWebView(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.webViewStyle) : WebView(context, attrs, defStyleAttr),
-  NestedScrollingChild {
+open class NestedWebView(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = android.R.attr.webViewStyle) :
+  WebView(context, attrs, defStyleAttr), NestedScrollingChild {
 
   private var mLastY: Int = 0
   private val mScrollOffset = IntArray(2)

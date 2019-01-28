@@ -25,9 +25,14 @@ import com.codertainment.buildnotifier.*
 import com.codertainment.buildnotifier.adapter.NotificationAdapter
 import com.codertainment.buildnotifier.helper.RevealCircleAnimatorHelper
 import com.codertainment.buildnotifier.helper.SimpleItemTouchHelperCallback
+import com.droidman.ktoasty.showErrorToast
+import com.droidman.ktoasty.showInfoToast
+import com.droidman.ktoasty.showSuccessToast
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.reward.RewardItem
+import com.google.android.gms.ads.reward.RewardedVideoAdListener
 import com.google.android.material.navigation.NavigationView
 import com.mcxiaoke.koi.ext.delayed
 import com.mcxiaoke.koi.ext.startActivity
@@ -79,12 +84,12 @@ class MainActivity : CAppCompatActivity(), NavigationView.OnNavigationItemSelect
 
     refresh()
 
-    main_adView.loadAd(AdRequest.Builder().addTestDevice("3A3EAD8011A8331155F75F36592A8315").build())
+    main_adView.loadAd(AdRequest.Builder().addTestDevice("6E5C1B71A72DFF0228687A2FBBD676E3").build())
     main_adView.adListener = object : AdListener() {
       override fun onAdLoaded() {
         super.onAdLoaded()
         val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        lp.setMargins(0, 0, 0, main_adView.height)
+        lp.setMargins(0, 0, 0, main_adView.measuredHeight)
         main_recycler.layoutParams = lp
       }
     }
@@ -105,6 +110,7 @@ class MainActivity : CAppCompatActivity(), NavigationView.OnNavigationItemSelect
 
     if (notifs.isEmpty()) {
       main_no_notifications_container.visibility = View.VISIBLE
+      main_recycler.invalidate()
       return
     } else {
       main_no_notifications_container.visibility = View.GONE
@@ -116,7 +122,7 @@ class MainActivity : CAppCompatActivity(), NavigationView.OnNavigationItemSelect
       2 -> notifs.sortBy { it.device }
       3 -> notifs.sortBy { it.buildVersion }
       4 -> notifs.sortBy { it.timeTaken }
-      5 -> notifs.sortBy { it.currentStep }
+      5 -> notifs.sortBy { it.progress }
     }
 
     if (reverseSort) {
@@ -151,9 +157,21 @@ class MainActivity : CAppCompatActivity(), NavigationView.OnNavigationItemSelect
       R.id.nav_build_script_setup -> {
         CustomTabsIntent.Builder().apply {
           setToolbarColor(Colorful().getPrimaryColor().getColorPack().normal().asInt())
-          build().launchUrl(this@MainActivity, Uri.parse("http://github.com/shripal17/BuildNotifier/README.md"))
+          build().launchUrl(this@MainActivity, Uri.parse("https://github.com/shripal17/BuildNotifierServer/README.md"))
         }
         return true
+      }
+      R.id.nav_support_us -> {
+        MaterialDialog(this).show {
+          message(R.string.support_us_warning)
+          positiveButton(android.R.string.ok) {
+            showRewardedVideoAd()
+          }
+          negativeButton(android.R.string.cancel)
+        }
+      }
+      R.id.nav_device_token -> {
+        showDeviceTokenDialog()
       }
       R.id.nav_settings -> {
         startActivity<SettingsActivity>()
@@ -177,6 +195,46 @@ class MainActivity : CAppCompatActivity(), NavigationView.OnNavigationItemSelect
     main_nav_view.setCheckedItem(R.id.nav_notifications)
     main_drawer_layout.closeDrawers()
     return true
+  }
+
+  private fun showRewardedVideoAd() {
+    showInfoToast(getString(R.string.loading_ad))
+    MobileAds.getRewardedVideoAdInstance(this).apply {
+      loadAd(BuildConfig.ADMOB_REWARDED_AD_UNIT_ID, AdRequest.Builder().addTestDevice("6E5C1B71A72DFF0228687A2FBBD676E3").build())
+      rewardedVideoAdListener = object : RewardedVideoAdListener {
+        override fun onRewardedVideoAdClosed() {
+
+        }
+
+        override fun onRewardedVideoAdLeftApplication() {
+
+        }
+
+        override fun onRewardedVideoAdLoaded() {
+          this@apply.show()
+        }
+
+        override fun onRewardedVideoAdOpened() {
+
+        }
+
+        override fun onRewardedVideoCompleted() {
+
+        }
+
+        override fun onRewarded(p0: RewardItem?) {
+          showSuccessToast(getString(R.string.thanks))
+        }
+
+        override fun onRewardedVideoStarted() {
+
+        }
+
+        override fun onRewardedVideoAdFailedToLoad(p0: Int) {
+          showErrorToast(getString(R.string.failed_to_load_ad))
+        }
+      }
+    }
   }
 
   override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -220,6 +278,18 @@ class MainActivity : CAppCompatActivity(), NavigationView.OnNavigationItemSelect
         }
       }
       return true
+    } else if (item?.itemId == R.id.action_delete_all) {
+      MaterialDialog(this).show {
+        title(R.string.warning)
+        message(R.string.delete_all_warning)
+        positiveButton(R.string.i_know_what_i_am_doing) {
+          notifBox.removeAll()
+          Handler().delayed(500) {
+            refresh()
+          }
+        }
+        negativeButton(R.string.nevermind)
+      }
     }
     return false
   }

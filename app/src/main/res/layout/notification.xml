@@ -59,12 +59,12 @@
     app:layout_constraintTop_toBottomOf="@id/notification_time"
     tools:text="Device"/>
   <TextView
-    android:id="@+id/notification_step"
+    android:id="@+id/notification_progress"
     style="@style/DetailStyle"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
-    android:contentDescription="@string/notification_stopped_at_step"
-    android:drawableRight="@drawable/ic_build_black"
+    android:contentDescription="@string/notification_progress"
+    android:drawableRight="@drawable/ic_progress_wrench_black"
     app:layout_constraintBaseline_toBaselineOf="@+id/notification_time_taken"
     app:layout_constraintEnd_toEndOf="parent"
     tools:text="Step"/>
@@ -90,7 +90,7 @@
     android:contentDescription="@string/notification_total_time_taken"
     android:drawableLeft="@drawable/ic_timer_black"
     app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toStartOf="@+id/notification_step"
+    app:layout_constraintEnd_toStartOf="@+id/notification_progress"
     app:layout_constraintStart_toStartOf="@+id/notification_text"
     app:layout_constraintTop_toBottomOf="@+id/notification_build_version"
     tools:text="@tools:sample/date/hhmmss"/>

@@ -1,4 +1,7 @@
 # Build Notifier
+
+<img src="/app/src/main/ic_launcher-web.png" width=250 height=250/>
+
 Mainly made with AOSP ROM Developers in mind
 
 We need to regularly check SSH to see build status of our ROMs.
@@ -8,6 +11,9 @@ But with this app and it's complementary script, you will be direcly notified wi
 You can view, sort, search and delete these notifications from the app and also view/save the Build Logs for each build from within the app!
 
 Written in 100% Kotlin
+
+## Screenshots
+https://photos.app.goo.gl/NoYDL64f4CQux5iM6
 
 ## Getting Started
 

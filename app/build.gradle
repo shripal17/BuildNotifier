@@ -8,6 +8,8 @@ apply plugin: 'kotlin-kapt'
 
 apply from: 'credentials.gradle'
 
+apply plugin: 'io.fabric'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -81,6 +83,7 @@ dependencies {
     implementation 'com.github.aniketbhoite:MutativeFab:1.0.8'
     implementation 'com.afollestad.material-dialogs:core:2.0.0-rc7'
     implementation 'com.github.florent37:runtime-permission-kotlin:1.1.0'
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.9.8'
 }
 
 androidExtensions {

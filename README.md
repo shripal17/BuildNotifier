@@ -23,6 +23,7 @@ Follow steps mentioned in the [Server Repo](https://github.com/shripal17/BuildNo
 ## Features
 - View/Save Build Logs Directly
 - View both Full or Error Logs from within the app
+- Tells you the percentage (if available) at which the build stopped 
 - Build Logs are Formatted for better readability (keywords like note, error, warning are highlighted)
 - View, Sort, Search and Delete Notifications 
 - Smooth and crisp animations in the app

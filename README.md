@@ -10,14 +10,8 @@ You can view, sort, search and delete these notifications from the app and also 
 Written in 100% Kotlin
 
 ## Getting Started
-1. Download the jar file and the sample build script to your AOSP ROM Working Directory
-2. Put your Device Token (can be obtained from app -> Settings -> Device Token at the top of build script, should look something like this:
 
-`DEVICE_TOKEN=YOUR_DEVICE_TOKEN_COMES_HERE`
-
-3. Modify the build script according to your build steps. You can name each step 
-
-4. Run the script and relax!
+Follow steps mentioned in the [Server Repo](https://github.com/shripal17/BuildNotifierServer)
 
 ## How It Works
 - Uses Firebase to push notifications from your working directory to your device
@@ -28,6 +22,7 @@ Written in 100% Kotlin
 
 ## Features
 - View/Save Build Logs Directly
+- View both Full or Error Logs from within the app
 - Build Logs are Formatted for better readability (keywords like note, error, warning are highlighted)
 - View, Sort, Search and Delete Notifications 
 - Smooth and crisp animations in the app

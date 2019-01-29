@@ -120,8 +120,7 @@ class AboutFragment : MaterialAboutFragment() {
       text(R.string.xda_thread)
       icon(getIcon(CommunityMaterial.Icon2.cmd_xda))
       setOnClickAction {
-        // TODO Replace with actual XDA Thread Link
-        openLink("https://xda-developers.com")
+        openLink("https://forum.xda-developers.com/android/software/devs-build-notifier-notified-build-t3894886")
       }
     }
     social.addItem(xda.build())

@@ -42,8 +42,8 @@
     notified when/if your build succeeds/fails\n\nFollow this quick start guide to begin</string>
 
   <string name="intro_screen_2_title">Server Setup</string>
-  <string name="intro_screen_2_description">Follow the instructions given here to setup your build server: https://github
-    .com/shripal17/BuildNotifierServer</string>
+  <string name="intro_screen_2_description">Follow the instructions given here to setup your build server:
+    https://github.com/shripal17/BuildNotifierServer</string>
 
   <string name="intro_screen_3_title">Relax!</string>
   <string name="intro_screen_3_description">Once you\'ve completed the Server Setup setup, sit back and relax\n\nPro Tip: You can view the

@@ -12,6 +12,8 @@ You can view, sort, search and delete these notifications from the app and also 
 
 Written in 100% Kotlin
 
+<a href='https://play.google.com/store/apps/details?id=com.codertainment.buildnotifier&utm_source=xda&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' width=400/></a>
+
 ## Screenshots
 https://photos.app.goo.gl/NoYDL64f4CQux5iM6
 

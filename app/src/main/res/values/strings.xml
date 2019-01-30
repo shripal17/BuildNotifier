@@ -51,7 +51,7 @@
 
   <!--Navigation Drawer Items-->
   <string name="nav_item_notifications">Notifications</string>
-  <string name="nav_item_build_script_setup">Build Script Setup</string>
+  <string name="nav_item_build_script_setup">Build Server Setup</string>
   <string name="nav_item_settings">Settings</string>
   <string name="nav_section_more">More</string>
   <string name="nav_item_other_apps">Other Apps</string>
@@ -80,7 +80,7 @@
   <string name="settings_device_token_text">%s\n\nPaste this token in a new file (named deviceToken.txt) in your ROM\'s working directory"</string>
   <string name="notification_action_view_logs">View Logs</string>
   <string name="logs_save">Save</string>
-  <string name="no_notifications_yet">Bro do you even develop?</string>
+  <string name="no_notifications_yet">Do you even build?</string>
   <string name="notification_status">Status</string>
   <string name="notification_build_started_at">Build Started At</string>
   <string name="notification_device">Device</string>

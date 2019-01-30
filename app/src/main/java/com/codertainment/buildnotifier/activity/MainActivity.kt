@@ -157,7 +157,7 @@ class MainActivity : CAppCompatActivity(), NavigationView.OnNavigationItemSelect
       R.id.nav_build_script_setup -> {
         CustomTabsIntent.Builder().apply {
           setToolbarColor(Colorful().getPrimaryColor().getColorPack().normal().asInt())
-          build().launchUrl(this@MainActivity, Uri.parse("https://github.com/shripal17/BuildNotifierServer/README.md"))
+          build().launchUrl(this@MainActivity, Uri.parse("https://github.com/shripal17/BuildNotifierServer/blob/master/README.md"))
         }
         return true
       }

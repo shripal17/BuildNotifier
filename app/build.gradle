@@ -16,8 +16,8 @@ android {
         applicationId "com.codertainment.buildnotifier"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 2
-        versionName "0.1.1"
+        versionCode 4
+        versionName "0.1.2"
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "ADMOB_APP_ID", ADMOB_APP_ID)
